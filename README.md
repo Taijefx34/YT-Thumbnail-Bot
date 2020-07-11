@@ -10,3 +10,7 @@ Description
 ```
 pip install -r requirements.txt
 ```
+
+
+##  Usage
+* Insert your bot token(line 3 in ytb.py) and run ytb.py to start bot
