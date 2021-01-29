@@ -5,12 +5,12 @@ Description
 * Original author: Legendax24 (legenda24)
 
 ##  Installation
-* Needed python version >= 3.6 (cause of new f-strings)
-* You can install required modules comfortably with pip:
+* Python version >= 3.6
+* Requirements:
 ```
-pip install -r requirements.txt
+pip install pyrogram
 ```
 
 
 ##  Usage
-* Insert your bot token(line 3 in ytb.py) and run ytb.py to start bot
+* Insert your bot token, api hash, api id in config.ini and run ytb.py to start bot
