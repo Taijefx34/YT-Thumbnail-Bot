@@ -15,9 +15,7 @@ async def start_message(_, msg):
     await msg.reply(start_message)
 
 
-# base regex - https://stackoverflow.com/a/19377429
-# just edited .+ to .{11}
-@app.on_message(filters.regex("^(https?\:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.{11}$"))
+@app.on_message(filters.regex("^https:\/\/?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/).{11}$"))
 async def gyt(_, msg):
     video_id = msg.text[-11:]
     kb = InlineKeyboardMarkup([[InlineKeyboardButton('🔗Link', url=f"https://youtu.be/{video_id}")]])
