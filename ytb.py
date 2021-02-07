@@ -1,5 +1,5 @@
 from pyrogram import Client, filters
-from pyrogram.errors import MediaEmpty
+from pyrogram.errors import WebpageCurlFailed
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 
@@ -15,16 +15,17 @@ async def start_message(_, msg):
     await msg.reply(start_message)
 
 
-# regex - https://stackoverflow.com/a/19377429
-@app.on_message(filters.regex("^(https?\:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$"))
+# base regex - https://stackoverflow.com/a/19377429
+# just edited .+ to .{11}
+@app.on_message(filters.regex("^(https?\:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.{11}$"))
 async def gyt(_, msg):
     video_id = msg.text[-11:]
     kb = InlineKeyboardMarkup([[InlineKeyboardButton('🔗Link', url=f"https://youtu.be/{video_id}")]])
 
     try:
         await msg.reply_photo(f'http://img.youtube.com/vi/{video_id}/maxresdefault.jpg', quote=True, reply_markup=kb)
-    except MediaEmpty:
-    	await msg.reply("**Invalid video link!**", quote=True)
+    except WebpageCurlFailed:
+        await msg.reply("**Invalid video link!**", quote=True)
     except:
         await msg.reply_photo(f'http://img.youtube.com/vi/{video_id}/0.jpg', quote=True, reply_markup=kb)
 
