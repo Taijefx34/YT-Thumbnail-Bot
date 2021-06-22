@@ -2,7 +2,7 @@
 Description
 ------------------------
 * Telegram bot to get thumbnail of youtube video. Link - https://t.me/yt_thumbnail_bot
-* Original author: Legendax24 (legenda24)
+* Original author: Taijef×34
 
 ##  Installation
 * Python version >= 3.6
